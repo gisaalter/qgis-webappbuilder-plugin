@@ -1,0 +1,283 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport"/>
+  <meta content="yes" name="mobile-web-app-capable"/>
+  <meta content="yes" name="apple-mobile-web-app-capable"/>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js">
+  </script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js">
+  </script>
+  <link href="webapp.css" rel="stylesheet"/>
+  <script src="./resources/ol.js">
+  </script>
+  <script src="./resources/ol3-extra-controls.js">
+  </script>
+  <script src="./resources/tools.js">
+  </script>
+  <script src="./resources/filtrex.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet" type="text/css"/>
+  <script src="./charts.js">
+  </script>
+  <script src="layers/lyr_trees.js">
+  </script>
+  <script src="layers/lyr_rivers.js">
+  </script>
+  <script src="layers/lyr_majrivers.js">
+  </script>
+  <script src="layers/lyr_lakes.js">
+  </script>
+  <script src="layers/lyr_swamp.js">
+  </script>
+  <script src="layers/lyr_popp.js">
+  </script>
+  <script src="layers/lyr_airports.js">
+  </script>
+  <script src="styles/trees.js">
+  </script>
+  <script src="styles/rivers.js">
+  </script>
+  <script src="styles/majrivers.js">
+  </script>
+  <script src="styles/lakes.js">
+  </script>
+  <script src="styles/swamp.js">
+  </script>
+  <script src="styles/popp.js">
+  </script>
+  <script src="styles/airports.js">
+  </script>
+  <script src="./layers/layers.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   function initialize() {
+    	showQueryPanel();
+showAttributesTable();
+sel = document.getElementById("chart-selector");
+                              chartNames = Object.keys(charts)
+                              for (var i = 0; i < chartNames.length; i++){
+                                  var option = document.createElement('option');
+                                  option.value = option.textContent = chartNames[i];
+                                  sel.appendChild(option);
+                              }
+                              sel.onchange = function(){
+                                  openChart(this.value);
+                              };
+                              openChart(Object.keys(charts)[0]);
+    }
+    window.onload = initialize;
+  </script>
+  <title>
+   Example Web App
+  </title>
+ </head>
+ <body>
+  <nav class="navbar navbar-default" id="toolbar" role="navigation">
+   <div class="navbar-header">
+    <button class="navbar-toggle" data-target="#navbar" data-toggle="collapse" type="button">
+     <span class="sr-only">
+      Toggle navigation
+     </span>
+     <span class="icon-bar">
+     </span>
+     <span class="icon-bar">
+     </span>
+     <span class="icon-bar">
+     </span>
+    </button>
+    <a class="navbar-brand" href="#">
+     Example Web App
+    </a>
+   </div>
+   <div class="collapse navbar-collapse" id="navbar">
+    <ul class="nav navbar-nav navbar-right">
+     <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+       Selection
+       <span class="caret">
+        <span>
+        </span>
+       </span>
+      </a>
+      <ul class="dropdown-menu">
+       <li>
+        <a href="#" onclick="selectSingleFeature()">
+         Select single feature
+        </a>
+       </li>
+       <li>
+        <a href="#" onclick="selectByPolygon()">
+         Select by polygon
+        </a>
+       </li>
+       <li>
+        <a href="#" onclick="selectByPointAndRadius()">
+         Select by point and radius
+        </a>
+       </li>
+       <li>
+        <a href="#" onclick="selectByRectangle()">
+         Select by rectangle
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+       Measure
+       <span class="caret">
+        <span>
+        </span>
+       </span>
+      </a>
+      <ul class="dropdown-menu">
+       <li>
+        <a href="#" onclick="measureTool('distance')">
+         Distance
+        </a>
+       </li>
+       <li>
+        <a href="#" onclick="measureTool('area')">
+         Area
+        </a>
+       </li>
+       <li>
+        <a href="#" onclick="measureTool(null)">
+         Remove measurements
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </div>
+  </nav>
+  <div id="content">
+   <div class="row">
+    <div class="col-md-4" id="tabs-panel">
+     <ul class="nav nav-tabs" role="tablist">
+      <li class="active">
+       <a data-toggle="tab" href="#about-tab" role="tab">
+        About
+       </a>
+      </li>
+      <li>
+       <a data-toggle="tab" href="#geocoding-tab" role="tab">
+        Geocoding
+       </a>
+      </li>
+      <li>
+       <a data-toggle="tab" href="#query-tab" role="tab">
+        Query
+       </a>
+      </li>
+      <li>
+       <a data-toggle="tab" href="#attributes-table-tab" role="tab">
+        Attributes table
+       </a>
+      </li>
+      <li>
+       <a data-toggle="tab" href="#charts-tab" role="tab">
+        Charts
+       </a>
+      </li>
+     </ul>
+     <div class="tab-content">
+      <div class="tab-pane active in" id="about-tab">
+       <div class="about-panel" id="about-panel">
+        <h1>
+         Example app
+        </h1>
+        <p>
+         An example app created with the QGIS Web App Builder
+        </p>
+       </div>
+      </div>
+      <div class="tab-pane" id="geocoding-tab">
+       <div class="input-group">
+        <input class="form-control" id="geocoding-search" onkeypress="searchBoxKeyPressed(event);" placeholder="Search placename..." type="text"/>
+        <div class="input-group-btn">
+         <button class="btn btn-default" onclick="searchAddress()">
+          <span>
+           &nbsp;
+          </span>
+          <i class="glyphicon glyphicon-search">
+          </i>
+         </button>
+        </div>
+       </div>
+       <div class="geocoding-results" id="geocoding-results">
+       </div>
+      </div>
+      <div class="tab-pane" id="query-tab">
+       <div class="query-panel" id="query-panel">
+        <form class="form-horizontal">
+         <div class="input-group" style="margin-bottom: 25px">
+          <span class="input-group-addon">
+           Layer
+          </span>
+          <select class="form-control" id="query-layer">
+          </select>
+         </div>
+         <div class="input-group" style="margin-bottom: 25px">
+          <span class="input-group-addon">
+           Filter
+          </span>
+          <input class="form-control" id="query-expression" placeholder="Type expression..." type="text"/>
+         </div>
+         <div class="form-group" style="margin-top:10px">
+          <div class="col-sm-12 controls">
+           <a class="btn btn-primary" href="#" id="btn-query-new">
+            New selection
+           </a>
+           <a class="btn btn-primary" href="#" id="btn-query-add">
+            Add to current selection
+           </a>
+           <a class="btn btn-primary" href="#" id="btn-query-in">
+            Select in current selection
+           </a>
+          </div>
+         </div>
+        </form>
+       </div>
+      </div>
+      <div class="tab-pane" id="attributes-table-tab">
+       <div class="attributes-table">
+       </div>
+      </div>
+      <div class="tab-pane" id="charts-tab">
+       <div class="chart-panel" id="chart-panel">
+        <select class="form-control" id="chart-selector">
+        </select>
+        <div class="chart-panel-info" id="chart-panel-info">
+        </div>
+        <div id="chart">
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="col-md-8">
+     <div id="map">
+      <div class="ol-popup" id="popup">
+       <a class="closer-icon" href="#" id="popup-closer">
+        &times;
+       </a>
+       <div id="popup-content">
+        Popup
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="./index.js">
+  </script>
+ </body>
+</html>

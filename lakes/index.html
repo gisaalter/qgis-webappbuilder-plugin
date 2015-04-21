@@ -1,0 +1,302 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport"/>
+  <meta content="yes" name="mobile-web-app-capable"/>
+  <meta content="yes" name="apple-mobile-web-app-capable"/>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js">
+  </script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js">
+  </script>
+  <link href="webapp.css" rel="stylesheet"/>
+  <script src="./resources/ol.js">
+  </script>
+  <script src="./resources/ol3-extra-controls.js">
+  </script>
+  <script src="./resources/tools.js">
+  </script>
+  <script src="./layers/layers.js" type="text/javascript">
+  </script>
+  <title>
+   Example Web App
+  </title>
+ </head>
+ <body>
+  <div id="content">
+   <div id="slideout">
+    Menu
+    <div id="slideout_inner">
+     <div class="container">
+      <ul class="nav navbar-nav navbar">
+       <li>
+        <a href="http://en.wikipedia.org/wiki/List_of_lakes_of_Alaska">
+         Wikipedia (Alaska lakes)
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+   <div id="map">
+    <div class="ol-popup" id="popup">
+     <a class="closer-icon" href="#" id="popup-closer">
+      &times;
+     </a>
+     <div id="popup-content">
+      Popup
+     </div>
+    </div>
+    <div class="story-panel">
+     <div class="row">
+      <div class="carousel " data-interval="false" data-ride="carousel" id="story-carousel">
+       <ol class="carousel-indicators">
+        <li class="active" data-slide-to="0" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="1" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="2" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="3" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="4" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="5" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="6" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="7" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="8" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="9" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="10" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="11" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="12" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="13" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="14" data-target="#story-carousel">
+        </li>
+        <li data-slide-to="15" data-target="#story-carousel">
+        </li>
+       </ol>
+       <div class="carousel-inner">
+        <div class="item active">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Lakes of Alaska
+           </h2>
+           <p>
+            Use the arrows to explore the main lakes of the state
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Teshekpuk Lake
+           </h2>
+           <p>
+            Teshekpuk Lake
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Lake Minchumina
+           </h2>
+           <p>
+            Lake Minchumina
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Lake George
+           </h2>
+           <p>
+            Lake George
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Nunavakpak Lake
+           </h2>
+           <p>
+            Nunavakpak Lake
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Dall Lake
+           </h2>
+           <p>
+            Dall Lake
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Kenai Lake
+           </h2>
+           <p>
+            Kenai Lake
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Skilak Lake
+           </h2>
+           <p>
+            Skilak Lake
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Lake Clark
+           </h2>
+           <p>
+            Lake Clark
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Tustumena Lake
+           </h2>
+           <p>
+            Tustumena Lake
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Nuvakuk Lake
+           </h2>
+           <p>
+            Nuvakuk Lake
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Iliamna Lake
+           </h2>
+           <p>
+            Iliamna Lake
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Lake Nerka
+           </h2>
+           <p>
+            Lake Nerka
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Naknek Lake
+           </h2>
+           <p>
+            Naknek Lake
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Becharof Lake
+           </h2>
+           <p>
+            Becharof Lake
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="item ">
+         <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <h2>
+            Lower Ugashik Lake
+           </h2>
+           <p>
+            Lower Ugashik Lake
+           </p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <a class="left carousel-control" data-slide="prev" href="#story-carousel">
+       <span class="glyphicon glyphicon-chevron-left">
+        &nbsp;
+       </span>
+      </a>
+      <a class="right carousel-control" data-slide="next" href="#story-carousel">
+       <span class="glyphicon glyphicon-chevron-right">
+        &nbsp;
+       </span>
+      </a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="./index.js">
+  </script>
+  <script src="./bookmarks.js">
+  </script>
+ </body>
+</html>
