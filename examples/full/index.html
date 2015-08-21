@@ -1,0 +1,366 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport"/>
+  <meta content="yes" name="mobile-web-app-capable"/>
+  <meta content="yes" name="apple-mobile-web-app-capable"/>
+  <script src="./resources/jquery.min.js">
+  </script>
+  <link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="./resources/bootstrap/js/bootstrap.min.js">
+  </script>
+  <link href="webapp.css" rel="stylesheet"/>
+  <script src="./resources/ol.js">
+  </script>
+  <script src="./resources/common.js">
+  </script>
+  <link href="./resources/charts.css" rel="stylesheet" type="text/css"/>
+  <script src="layers/lyr_lakes.js">
+  </script>
+  <link href="./resources/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+  <script src="layers/lyr_popp.js">
+  </script>
+  <script src="./resources/selectiontools.js">
+  </script>
+  <script src="./legend/legend.js">
+  </script>
+  <script src="layers/lyr_majrivers.js">
+  </script>
+  <script src="styles/popp.js">
+  </script>
+  <script src="./resources/charts.js">
+  </script>
+  <link href="./resources/edit.css" rel="stylesheet" type="text/css"/>
+  <link href="./resources/zoomcontrols.css" rel="stylesheet" type="text/css"/>
+  <link href="./resources/measuretools.css" rel="stylesheet" type="text/css"/>
+  <script src="styles/lakes.js">
+  </script>
+  <link href="./resources/overviewmap.css" rel="stylesheet" type="text/css"/>
+  <link href="./resources/slider.css" rel="stylesheet" type="text/css"/>
+  <link href="./resources/attributestable.css" rel="stylesheet" type="text/css"/>
+  <script src="./resources/bootbox.min.js">
+  </script>
+  <script src="styles/rivers.js">
+  </script>
+  <script src="./resources/attributestable.js">
+  </script>
+  <script src="./resources/query.js">
+  </script>
+  <script src="./resources/layerslist.js">
+  </script>
+  <script src="./resources/jspdf.min.js">
+  </script>
+  <script src="styles/airports.js">
+  </script>
+  <script src="layers/lyr_swamp.js">
+  </script>
+  <script src="./resources/print.js">
+  </script>
+  <script src="./resources/c3.min.js">
+  </script>
+  <script src="layers/lyr_rivers.js">
+  </script>
+  <link href="./resources/c3.min.css" rel="stylesheet" type="text/css"/>
+  <script src="styles/swamp.js">
+  </script>
+  <script src="./resources/geocoding.js">
+  </script>
+  <script src="layers/lyr_airports.js">
+  </script>
+  <link href="./resources/legend.css" rel="stylesheet" type="text/css"/>
+  <script src="./resources/bootstrap-slider.js">
+  </script>
+  <script src="./resources/d3.min.js">
+  </script>
+  <link href="./resources/geocoding.css" rel="stylesheet" type="text/css"/>
+  <script src="./resources/measure.js">
+  </script>
+  <script src="styles/majrivers.js">
+  </script>
+  <script src="./charts.js">
+  </script>
+  <link href="./resources/query.css" rel="stylesheet" type="text/css"/>
+  <script src="./resources/legend.js">
+  </script>
+  <script src="./resources/edit.js">
+  </script>
+  <script src="./resources/filtrex.js">
+  </script>
+  <script src="./resources/addlayer.js">
+  </script>
+  <script src="./resources/colorpicker/js/bootstrap-colorpicker.min.js">
+  </script>
+  <link href="./resources/layerslist.css" rel="stylesheet" type="text/css"/>
+  <script src="./layers/layers.js" type="text/javascript">
+  </script>
+  <title>
+   My Web App
+  </title>
+ </head>
+ <body>
+  <nav class="navbar navbar-default" id="toolbar" role="navigation">
+   <div class="navbar-header">
+    <button class="navbar-toggle" data-target="#navbar" data-toggle="collapse" type="button">
+     <span class="sr-only">
+      Toggle navigation
+     </span>
+     <span class="icon-bar">
+     </span>
+     <span class="icon-bar">
+     </span>
+     <span class="icon-bar">
+     </span>
+    </button>
+    <a class="navbar-brand" href="#">
+     My Web App
+    </a>
+   </div>
+   <div class="collapse navbar-collapse" id="navbar">
+    <ul class="nav navbar-nav navbar-right">
+     <li>
+      <a href="help/help.html">
+       <i class="glyphicon glyphicon-question-sign">
+       </i>
+       Help
+      </a>
+     </li>
+     <li>
+      <a href="#" onclick="showEditPanel()">
+       <i class="glyphicon glyphicon-pencil">
+       </i>
+       Edit
+      </a>
+     </li>
+     <li>
+      <a href="#" onclick="addLayerFromFile()">
+       <i class="glyphicon glyphicon-open">
+       </i>
+       Add layer
+      </a>
+     </li>
+     <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+       <i class="glyphicon glyphicon-stats">
+       </i>
+       Charts
+       <span class="caret">
+        <span>
+        </span>
+       </span>
+      </a>
+      <ul class="dropdown-menu">
+       <li>
+        <a href="#" onclick="openChart('Airports count by use type')">
+         Airports count by use type
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+       Selection
+       <span class="caret">
+        <span>
+        </span>
+       </span>
+      </a>
+      <ul class="dropdown-menu">
+       <li>
+        <a href="#" onclick="removeSelectionTool()">
+         No selection tool (zoom/pan)
+        </a>
+       </li>
+       <li>
+        <a href="#" onclick="selectByPolygon()">
+         Select by polygon
+        </a>
+       </li>
+       <li>
+        <a href="#" onclick="selectByRectangle()">
+         Select by rectangle
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+       <i class="glyphicon glyphicon-print">
+       </i>
+       Print
+       <span class="caret">
+        <span>
+        </span>
+       </span>
+      </a>
+      <ul class="dropdown-menu" style="text-align:center;">
+       <li>
+        <img src="print/fulllayout_thumbnail.png" style=" border:1px solid #333333;"/>
+        <a href="#" onclick="printMap('Full layout')">
+         Full layout
+        </a>
+       </li>
+       <li class="nav-divider">
+       </li>
+       <li>
+        <img src="print/maponly_thumbnail.png" style=" border:1px solid #333333;"/>
+        <a href="#" onclick="printMap('Map only')">
+         Map only
+        </a>
+       </li>
+       <li class="nav-divider">
+       </li>
+      </ul>
+     </li>
+     <li>
+      <a href="#" onclick="showQueryPanel()">
+       <i class="glyphicon glyphicon-filter">
+       </i>
+       Query
+      </a>
+     </li>
+     <div class="navbar-form navbar-right">
+      <div class="input-group">
+       <input class="form-control" id="geocoding-search" onkeypress="searchBoxKeyPressed(event);" placeholder="Search placename..." type="text"/>
+       <div class="input-group-btn">
+        <button class="btn btn-default" onclick="searchAddress()">
+         <span>
+          &nbsp;
+         </span>
+         <i class="glyphicon glyphicon-search">
+         </i>
+        </button>
+       </div>
+      </div>
+     </div>
+     <li>
+      <a href="#" onclick="showAttributesTable()">
+       <i class="glyphicon glyphicon-list-alt">
+       </i>
+       Attributes table
+      </a>
+     </li>
+     <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+       Measure
+       <span class="caret">
+        <span>
+        </span>
+       </span>
+      </a>
+      <ul class="dropdown-menu">
+       <li>
+        <a href="#" onclick="measureTool('distance')">
+         Distance
+        </a>
+       </li>
+       <li>
+        <a href="#" onclick="measureTool('area')">
+         Area
+        </a>
+       </li>
+       <li>
+        <a href="#" onclick="measureTool(null)">
+         Remove measurements
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </div>
+  </nav>
+  <div id="content">
+   <div id="map">
+    <div class="ol-popup" id="popup">
+     <a class="closer-icon" href="#" id="popup-closer">
+      &times;
+     </a>
+     <div id="popup-content">
+      Popup
+     </div>
+    </div>
+    <div class="edit-tool-panel" id="edit-tool-panel">
+     <form class="form-inline">
+      <div class="input-group">
+       <div class="input-group-addon">
+        Layer
+       </div>
+       <select class="form-control" id="edit-layer">
+       </select>
+       <div class="input-group-addon">
+        <a href="#" id="btn-add-empty-layer">
+         <i class="glyphicon glyphicon-plus">
+         </i>
+        </a>
+       </div>
+      </div>
+      <a class="btn btn-primary" href="#" id="btn-edit-tool">
+       Enable edit mode
+      </a>
+      <a class="btn btn-default" href="#" id="btn-close-edit">
+       Close
+      </a>
+     </form>
+    </div>
+    <div class="query-panel" id="query-panel">
+     <form class="form-horizontal">
+      <div class="input-group" style="margin-bottom: 25px">
+       <span class="input-group-addon">
+        Layer
+       </span>
+       <select class="form-control" id="query-layer">
+       </select>
+      </div>
+      <div class="input-group" style="margin-bottom: 25px">
+       <span class="input-group-addon">
+        Filter
+       </span>
+       <input class="form-control" id="query-expression" placeholder="Type expression..." type="text"/>
+       <span class="input-group-addon">
+        <a href="https://github.com/joewalnes/filtrex#expressions" target="_blank">
+         Help
+        </a>
+       </span>
+      </div>
+      <div class="form-group" style="margin-top:10px">
+       <div class="col-sm-12 controls">
+        <a class="btn btn-primary" href="#" id="btn-query-new">
+         New selection
+        </a>
+        <a class="btn btn-primary" href="#" id="btn-query-add">
+         Add to current selection
+        </a>
+        <a class="btn btn-primary" href="#" id="btn-query-in">
+         Select in current selection
+        </a>
+        <a class="btn btn-default" href="#" id="btn-close-query">
+         Close
+        </a>
+       </div>
+      </div>
+     </form>
+    </div>
+    <div class="geocoding-results" id="geocoding-results">
+    </div>
+   </div>
+   <div class="chart-panel" id="chart-panel">
+    <span class="chart-panel-info" id="chart-panel-info">
+    </span>
+    <a class="chart-panel-closer" href="#" id="chart-panel-closer">
+     Close
+    </a>
+    <div id="chart">
+    </div>
+   </div>
+   <div class="attributes-table">
+    <a class="attributes-table-closer" href="#" id="attributes-table-closer">
+     Close
+    </a>
+   </div>
+  </div>
+  <script src="./index.js">
+  </script>
+  <script src="print/layouts.js">
+  </script>
+ </body>
+</html>
