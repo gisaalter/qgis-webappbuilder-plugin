@@ -1,18 +1,5 @@
-baseLayers = [new ol.layer.Tile({
-    type: 'base',
-    title: 'CartoDB light',
-    source: new ol.source.XYZ({
-        url: 'http://s.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-        attributions: [new ol.Attribution({
-            html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>']
-        })]
-    })
-})];
-var baseLayersGroup = new ol.layer.Group({
-    'type': 'base',
-    'title': 'Base maps',
-    layers: baseLayers
-});
+baseLayers = [];
+
 var overviewMapBaseLayer = new ol.layer.Tile({
     type: 'base',
     title: 'Stamen toner',
@@ -111,4 +98,3 @@ lyr_swamp.setVisible(true);
 lyr_popp.setVisible(true);
 lyr_airports.setVisible(true);
 var layersList = [group_hydro, lyr_popp, lyr_airports];
-layersList.unshift(baseLayersGroup);
