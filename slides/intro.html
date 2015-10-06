@@ -117,6 +117,8 @@
 class: center, middle, inverse
 
 # QGIS Web App Builder
+## Víctor Olaya
+<img src="./images/logo.png"/>
 
 ---
 
@@ -162,6 +164,7 @@ class: center, middle, inverse
 - Styling defined using QGIS symbology and automatically exported
 - Automated format conversion and reprojection (If QGIS can use it, the web app can use it as well)
 - Several options depending on layer type
+  - Clustering, time info, allow feature selection (for vector layers)...
 ]
 ---
 
@@ -198,9 +201,9 @@ class: center, middle, inverse
 ]
 .right-column[
 - OL3 default controls (zoom buttons, scale line, overview map...)
-- Custom controls (Layers list, home extent...)
-- Custom tools that interact with the map (attributes table, charts, queries...)
-- Other web elements (info panels, links...)
+- Custom controls (Layers list, legend, home extent...)
+- Custom tools that interact with the map (layer filters, attributes table, charts, queries...)
+- Other elements (info panels, links...)
 ]
 ---
 .left-column[
@@ -208,6 +211,7 @@ class: center, middle, inverse
   ### Some custom tools and controls
 ]
 .right-column[
+Layers list
 <img src="./images/layerslist.png" width="70%"/>
 ]
 
@@ -217,7 +221,10 @@ class: center, middle, inverse
   ### Some custom tools and controls
 ]
 .right-column[
+Attributes table
 <img src="./images/attributestable.png" width="100%"/>
+
+Query
 <img src="./images/query.png" width="100%"/>
 ]
 
@@ -228,9 +235,10 @@ class: center, middle, inverse
   ### Some custom tools and controls
 ]
 .right-column[
-
+Measure tools
 <img src="./images/measuretools.png" width="40%"/>
 
+Selection tools
 <img src="./images/selectiontools.png" width="40%"/>
 ]
 
@@ -243,9 +251,46 @@ class: center, middle, inverse
 .right-column[
 
 *Bookmarks as narrative map*
-
 <img src="./images/bookmarks.png" width="100%"/>
 
+]
+
+---
+
+.left-column[
+  ##Controls and tools
+  ### Some custom tools and controls
+]
+.right-column[
+Timeline
+<img src="./images/timeline.png" width="100%"/>
+
+Legend
+<img src="./images/legend.png" width="100%"/>
+]
+
+---
+
+.left-column[
+  ##Controls and tools
+  ### Some custom tools and controls
+]
+.right-column[
+Printing
+<img src="./images/print.png" width="100%"/>
+]
+
+
+---
+
+.left-column[
+  ##Controls and tools
+  ### Analysis
+]
+.right-column[
+- Analysis algorithms from Turf.js
+- Custom algorithms 
+- Desktop-GIS approach
 ]
 
 
@@ -273,10 +318,30 @@ class: center, middle, inverse
 ]
 
 ---
+
 class: center, middle, inverse
 
 # Demo
 
+---
+
+.left-column[
+  ##Future development  
+]
+.right-column[
+- Deployment to cloud
+- Integration with WebSDK and Node.js
+- Integration with other QGIS elements (time manager plugin...)
+]
+
+---
+
+class: center, middle, inverse
+
+# Thanks!
+## Víctor Olaya
+## volaya@boundlessgeo.com
+  
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
