@@ -1,1 +1,0 @@
-var legendData = {"airports": [["", "5_0.png"]], "lakes": [["", "2_0.png"]], "rivers": [["", "0_0.png"]], "swamp": [["", "3_0.png"]], "popp": [["", "4_0.png"]], "majrivers": [["", "1_0.png"]]};
