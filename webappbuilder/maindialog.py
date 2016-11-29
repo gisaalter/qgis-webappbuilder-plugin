@@ -13,6 +13,7 @@ import utils
 from collections import defaultdict
 from qgis.utils import iface
 from appcreator import createApp, AppDefProblemsDialog, loadAppdef, saveAppdef, checkAppCanBeCreated
+from builddialog import BuildDialog
 import settings
 from types import MethodType
 import webbrowser
@@ -24,6 +25,7 @@ import traceback
 from treelayeritem import TreeLayerItem, TreeGroupItem
 from exceptions import WrongValueException
 from PyQt4 import uic
+import sdkwebservice
 
 # Adding so that our UI files can find resources_rc.py
 sys.path.append(os.path.dirname(__file__))
@@ -502,19 +504,25 @@ class MainDialog(BASE, WIDGET):
                     if ret == QMessageBox.No:
                         return
                 self._run(lambda: createApp(appdef, not self.checkBoxDeployData.isChecked(), folder, False, self.progress))
-                box = QMessageBox()
-                box.setWindowTitle("Web App Builder");
-                box.setTextFormat(Qt.RichText)
-                box.setText("Application files have been correctly generated.<br>"
-                            "Use the  <a href='http://boundlessgeo.com/products/opengeo-suite/'> Boundless WebSDK </a> for building the final webapp from them.")
-                box.exec_()
+                settings = QSettings('Boundless', 'WAB')
+                autoBuild = settings.value('autoBuild', False, bool)
+                if not autoBuild:
+                    dlg = BuildDialog()
+                    dlg.exec_()
+                    if not dlg.buildApp:
+                        return
+                try:
+                    sdkwebservice.build(folder)
+                    QMessageBox.information(self, "Build App", "Web app was correctly built.")
+                except Exception, e:
+                    QMessageBox.critical(self, "Error building web App", "Web app could not be built: %s" % str(e))
+     
         except WrongValueException:
             pass
         except:
             QgsMessageLog.logMessage(traceback.format_exc(), level=QgsMessageLog.CRITICAL)
             QMessageBox.critical(iface.mainWindow(), "Error creating web app",
                                  "Could not create web app.\nCheck the QGIS log for more details.")
-
 
     def createAppDefinition(self, preview = False):
         layers, groups = self.getLayersAndGroups()

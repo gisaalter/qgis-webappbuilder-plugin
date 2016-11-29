@@ -82,8 +82,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>714</width>
-            <height>364</height>
+            <width>684</width>
+            <height>329</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout">
@@ -177,8 +177,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>98</width>
-               <height>36</height>
+               <width>658</width>
+               <height>183</height>
               </rect>
              </property>
              <layout class="QGridLayout" name="gridLayout_4">
@@ -210,8 +210,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>98</width>
-               <height>36</height>
+               <width>658</width>
+               <height>182</height>
               </rect>
              </property>
              <layout class="QGridLayout" name="gridLayout_3">
@@ -250,8 +250,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>98</width>
-               <height>36</height>
+               <width>654</width>
+               <height>422</height>
               </rect>
              </property>
              <layout class="QGridLayout" name="gridLayout_8">
@@ -284,8 +284,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>363</width>
-            <height>527</height>
+            <width>669</width>
+            <height>554</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -505,6 +505,139 @@ They will become enabled once the deploy method is modified and the correspondin
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QWidget" name="deployTab">
+      <attribute name="title">
+       <string>Deploy App</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string>Deployment</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QRadioButton" name="radioOnlyCreate">
+            <property name="text">
+             <string>Only create jsx files</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioCreateNotDeploy">
+            <property name="text">
+             <string>Create web app using SDK web service, but don't deploy [Boundless Enterprise only]</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioDeploy">
+            <property name="text">
+             <string>Create web app and deploy to container [Boundless Enterprise only]</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="checkBoxUseContainerApps">
+              <property name="text">
+               <string>Also use PostGIS / GeoServer from container</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>132</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Boundless Connect credentials</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_13">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Username</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="connectUsernameBox">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_15">
+            <property name="text">
+             <string>Password</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="connectPasswordBox">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+      <zorder>groupBox_2</zorder>
+      <zorder>verticalSpacer_2</zorder>
+      <zorder>groupBox_3</zorder>
+      <zorder>checkBoxUseContainerApps</zorder>
      </widget>
      <widget class="QWidget" name="settingsTab">
       <attribute name="title">
